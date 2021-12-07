@@ -3,4 +3,11 @@ class Item < ApplicationRecord
   validates :price, numericality: { greater_than: 0, allow_nil: true }
   validates :name, :description, presence: true
 
+  # Callbacks
+  after_initialize { p 'initialize' } #Item.new Item.first
+  after_save       { p 'save' } #Item.create Item.save
+  after_create     { p 'create' } #Item.create
+  after_update     { p 'update' } #Item.update
+  after_destroy    { p 'destroy' } #Item.last.after_destroy
+
 end
